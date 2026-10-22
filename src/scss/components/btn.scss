@@ -1,0 +1,63 @@
+.btn {
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  background: transparent;
+
+  transition: $standartTrans;
+  height: fit-content;
+  width: fit-content;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $blueColor;
+    outline-offset: 3px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &-white {
+    border: 2px solid #fff;
+    color: #fff;
+
+    @include hover {
+      background: #283d87;
+      border-color: #283d87;
+      color: #fff;
+    }
+  }
+
+  &-blue {
+    border: 2px solid #283d87;
+    color: #283d87;
+    background: transparent;
+
+    @include hover {
+      background: #283d87;
+      color: #fff;
+    }
+  }
+
+  &-gray {
+    border: 2px solid #e4e6eb;
+    color: $blueColor;
+    background: #e4e6eb;
+
+    @include hover {
+      border-color: $blueColor;
+      background: transparent;
+    }
+  }
+}

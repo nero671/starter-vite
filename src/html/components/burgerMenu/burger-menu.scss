@@ -1,0 +1,56 @@
+// Выезжающее сверху меню. Открывается классом ._is-open
+.burger-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  width: 100%;
+  height: auto;
+  padding-bottom: 60px;
+  display: none;
+  z-index: 999;
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition: transform 0.28s ease-in-out, visibility 0.28s;
+
+  @include media(1200) {
+    display: block;
+  }
+
+  @include media(600) {
+    padding-bottom: 100px;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  &._is-open {
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  &-wrapper {
+    padding: 20px;
+  }
+
+  &-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &-logo {
+    font-weight: 400;
+    font-size: 80px;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #262626;
+  }
+
+  &-content {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}

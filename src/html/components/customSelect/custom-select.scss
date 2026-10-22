@@ -1,0 +1,107 @@
+/**
+ * Кастомный select. Цвета настраиваются CSS-переменными на обёртке:
+ * .custom-select-wrapper { --select-color: #000; --select-bg: #fff; }
+ */
+select.native-select {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-select-wrapper {
+  --select-color: #fff;
+  --select-bg: #1d2a4f;
+  --select-border: rgba(255, 255, 255, 0.4);
+  --select-accent: rgba(255, 255, 255, 0.12);
+
+  position: relative;
+}
+
+.custom-select {
+  position: relative;
+  user-select: none;
+}
+
+.custom-select__selected {
+  position: relative;
+  padding: 29px 0 7px 0;
+  border-bottom: 1px solid var(--select-border);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--select-color);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+
+  &:focus-visible {
+    outline: 2px solid var(--select-color);
+    outline-offset: 4px;
+  }
+}
+
+// Стрелка рисуется маской, поэтому всегда в цвет текста (currentColor)
+.custom-select__selected::after {
+  content: '';
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15 7.99976L10.0503 12.9495C8.87868 14.1211 6.97919 14.1211 5.80761 12.9495L0.857866 7.99976" stroke="white" stroke-width="2"/></svg>') no-repeat center / contain;
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.custom-select.open .custom-select__selected::after {
+  transform: rotate(180deg);
+}
+
+.custom-select__options {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  background: var(--select-bg);
+  z-index: 2;
+  max-height: 200px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+}
+
+.custom-select__option {
+  padding: 4px 8px;
+  cursor: pointer;
+  color: var(--select-color);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+
+  &.is-focused,
+  &.is-selected {
+    background: var(--select-accent);
+  }
+
+  @include hover {
+    background: var(--select-accent);
+  }
+}
+
+.custom-select.open .custom-select__options {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}

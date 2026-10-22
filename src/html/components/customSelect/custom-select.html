@@ -1,0 +1,21 @@
+{{!--
+  Кастомный select. Подключение в странице:
+  {{> components/customSelect/custom-select
+    name="for"
+    text="Кому (выбрать из списка)"
+    options=(parseJson '[
+      { "value": "business", "label": "Служба франчайзинга" },
+      { "value": "hr", "label": "Служба управления персоналом", "selected": true }
+    ]')
+  }}
+  JS: customSelect() в app.js
+--}}
+<div class="custom-select-wrapper">
+    <select name="{{name}}" class="native-select" hidden>
+        <option value="">{{text}}</option>
+        {{#each options}}
+        <option value="{{#if this.value}}{{this.value}}{{else}}{{@index}}{{/if}}"{{#if this.selected}} selected{{/if}}>{{this.label}}</option>
+        {{/each}}
+    </select>
+    <div class="custom-select"></div>
+</div>

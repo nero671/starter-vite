@@ -1,0 +1,56 @@
+.tabs {
+  &__nav {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__btn {
+    flex-shrink: 0;
+    padding: 12px 20px;
+    border-radius: 40px;
+    background: #f2f2f2;
+    font-weight: 500;
+    font-size: 16px;
+    white-space: nowrap;
+
+    &.show {
+      background: $blackColor;
+      color: $whiteColor;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $blueColor;
+      outline-offset: 2px;
+    }
+  }
+
+  &__panel {
+    display: none;
+    padding-top: 24px;
+    font-size: 16px;
+    line-height: 1.5;
+
+    &.active {
+      display: block;
+      animation: tabFadeIn $animation-duration ease;
+    }
+  }
+}
+
+@keyframes tabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

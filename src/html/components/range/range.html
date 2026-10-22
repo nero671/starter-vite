@@ -1,0 +1,29 @@
+{{!--
+  Слайдер диапазона. Подключение в странице:
+  {{> components/range/range start=1000 end=5000 min=0 max=10000 text="₽" name="price"}}
+  JS: rangeSlider() в app.js (нужен nouislider)
+--}}
+<div
+        class="range-slider range-slider--price"
+        data-range-start="{{start}}"
+        data-range-end="{{end}}"
+        data-range-min="{{min}}"
+        data-range-max="{{max}}"
+>
+
+    <div class="range-slider__element"></div>
+    <div class="rang-slider__minmax-wrapper">
+        <div class="range-slider__minmax">
+            {{min}} {{text}}
+        </div>
+        <div class="range-slider__minmax">
+            {{max}} {{text}}
+        </div>
+    </div>
+    <div class="form-control range-slider__control range-slider__control--from">
+        <input class="form-control__input range-slider__input" type="text" name="{{name}}_from" placeholder="от">
+    </div>
+    <div class="form-control range-slider__control range-slider__control--to">
+        <input class="form-control__input range-slider__input" type="text" name="{{name}}_to" placeholder="до">
+    </div>
+</div>

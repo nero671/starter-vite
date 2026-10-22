@@ -1,0 +1,5 @@
+.home-banner {
+  padding: fluid(60, 160) 0;
+  // В build к фону автоматически добавляется image-set() с webp
+  background: url('@img/banner-bgd.png') center / cover no-repeat;
+}

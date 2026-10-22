@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+{{> head title="UI-кит"}}
+<body>
+<div class="wrapper">
+  {{> header/header}}
+  <main class="page">
+    <div data-observ></div>
+    {{> components/breadcrumbs/breadcrumbs
+      items=(parseJson '[
+        { "title": "Главная", "url": "/" },
+        { "title": "О компании", "url": "/services" },
+        { "title": "Разработка" },
+        { "title": "Контакты", "url": "/contacts" },
+        { "title": "Карьера", "url": "/careers" },
+        { "title": "Блог", "url": "/blog" }
+      ]')
+    }}
+
+    <div class="ui__container">
+      <section class="ui-section">
+        <h2 class="title">Картинки</h2>
+        {{!-- В build <img> с jpg/png автоматически оборачивается в <picture> с webp --}}
+        <img src="@img/kyiv-fitness-center-1.jpg" alt="Пример картинки" width="400" loading="lazy">
+      </section>
+
+      <section class="ui-section">
+        <h2 class="title">Кнопки</h2>
+        <div class="ui-row">
+          <button class="btn btn-blue" type="button">btn-blue</button>
+          <button class="btn btn-gray" type="button">btn-gray</button>
+          <button class="btn btn-blue" type="button" data-type="popup">Открыть попап</button>
+        </div>
+      </section>
+
+      <section class="ui-section">
+        <h2 class="title">Форма с валидацией</h2>
+        <div class="form-content">
+          <form action="#" class="form validation-form">
+            <div class="form-item">
+              <div class="form-control">
+                <span>ФИО</span>
+                <input id="name"
+                       class="form-control__input "
+                       type="text"
+                       name="name"
+                       placeholder="Иванов Иван Иванович"
+                       required-message="Обязательное поле"
+                       only-letters
+                       maxlength='50'
+                       required=""
+                >
+              </div>
+            </div>
+
+            <div class="form-item">
+              <div class="form-control">
+                <span>Телефон</span>
+                <input id="tel"
+                       class="form-control__input "
+                       type="tel"
+                       name="tel"
+                       placeholder="+375 ( "
+                       required-message="Номер указан неверно"
+                       phone
+                       maxlength='50'
+                       required=""
+                >
+              </div>
+            </div>
+
+            <div class="form-item">
+              <div class="form-control">
+                <span>Email</span>
+                <input id="email"
+                       class="form-control__input "
+                       type="text"
+                       name="em"
+                       placeholder="email@mail.com"
+                       required-message="Обязательное поле"
+                       custom-email
+                       maxlength='50'
+                       required=""
+                >
+              </div>
+            </div>
+
+            <div class="form-item">
+              <div class="form-control">
+                <span>Введите Ваш комментарий</span>
+                <textarea id="message"
+                          class="form-control__input "
+                          name="text"
+                          placeholder="0/300"
+                          required-message="Обязательное поле"
+                          maxlength='300'
+                          required=""
+                ></textarea>
+                <span id="char-counter" style="display:none; font-size: 12px;"></span>
+              </div>
+            </div>
+
+            <div class="form-item">
+              <div class="form-control form-control-checkbox">
+                <input id="form-checkbox"
+                       class="custom-checkbox"
+                       type="checkbox"
+                       name="form-checkbox"
+                       checked
+                       required=""
+                       required-message="Обязательное поле"
+                >
+                <label for="form-checkbox" class="form-control__text-wrapper">
+                  <div class="form-control__text">
+                    Я согласен на обработку личных данных в соответствии
+                    <a href="#">с политикой конфиденциальности</a>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-item">
+              <button class="btn form-btn">
+                Отправить
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="ui-section">
+        <h2 class="title">Чекбокс</h2>
+        {{> components/customCheckbox/checkbox id="agree" text="Согласен с условиями" checked=true}}
+      </section>
+
+      <section class="ui-section">
+        <h2 class="title">Select</h2>
+        {{> components/customSelect/custom-select
+          name="for"
+          text="Кому (выбрать из списка)"
+          options=(parseJson '[
+            { "value": "business", "label": "Служба франчайзинга и оптовых продаж" },
+            { "value": "develop", "label": "Служба развития и рекламы" },
+            { "value": "supply", "label": "Служба снабжения и производства" },
+            { "value": "hr", "label": "Служба управления персоналом" },
+            { "value": "info", "label": "Другое" }
+          ]')
+        }}
+      </section>
+
+      <section class="ui-section">
+        <h2 class="title">Dropdown</h2>
+        {{> components/dropdown/dropdown
+          current="RU"
+          options=(parseJson '[
+            { "label": "RU" },
+            { "label": "EN" },
+            { "label": "BEL" }
+          ]')
+        }}
+      </section>
+
+      <section class="ui-section">
+        <h2 class="title">Счётчик</h2>
+        {{> components/counter/counter}}
+      </section>
+
+      <section class="ui-section">
+        <h2 class="title">Аккордеон</h2>
+        {{> components/accordion/accordion
+          single=true
+          items=(parseJson '[
+            { "title": "Первый вопрос", "text": "Ответ на первый вопрос", "open": true },
+            { "title": "Второй вопрос", "text": "Ответ на второй вопрос" }
+          ]')
+        }}
+      </section>
+
+      <section class="ui-section">
+        <h2 class="title">Табы</h2>
+        {{> components/tabs/tabs
+          items=(parseJson '[
+            { "title": "Описание", "text": "Текст первой вкладки" },
+            { "title": "Характеристики", "text": "Текст второй вкладки" }
+          ]')
+        }}
+      </section>
+
+      <section class="ui-section">
+        <h2 class="title">Загрузка файла</h2>
+        {{> components/file/file}}
+      </section>
+
+      <section class="ui-section">
+        <h2 class="title">Слайдер диапазона</h2>
+        {{> components/range/range start=1000 end=5000 min=0 max=10000 text="₽" name="price"}}
+      </section>
+
+      <section class="ui-section">
+        <h2 class="title">Пагинация</h2>
+        {{> components/pagination/pagination}}
+      </section>
+
+      <section class="ui-section">
+        <h2 class="title">Анимация чисел</h2>
+        <span class="title" data-count-target="12 500">0</span>
+      </section>
+    </div>
+  </main>
+  {{> footer/footer}}
+</div>
+{{> components/popup/popup}}
+{{> components/cookies-banner/cookies-banner}}
+{{> script}}
+</body>
+</html>

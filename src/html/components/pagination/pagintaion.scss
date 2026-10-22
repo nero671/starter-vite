@@ -1,0 +1,115 @@
+.pagination {
+  margin-bottom: 70px;
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    gap: 20px;
+  }
+
+  &-dots {
+    pointer-events: none;
+  }
+
+  ul {
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+
+    @include media(700) {
+      gap: 16px;
+    }
+
+    li {
+      font-weight: 400;
+      font-size: 20px;
+      color: #909090;
+      cursor: pointer;
+
+      a {
+        color: #909090;
+      }
+
+      &.active {
+        color: #262626;
+
+        a {
+          color: #262626;
+        }
+
+        svg path {
+          fill: #262626;
+        }
+      }
+
+      @include hover {
+        color: #262626;
+
+        a {
+          color: #262626;
+        }
+
+        svg path {
+          fill: #262626;
+        }
+      }
+
+      &.prev {
+        margin-right: 80px;
+
+        &.disabled {
+          pointer-events: none;
+
+          svg path {
+            fill: #909090;
+          }
+        }
+
+        @include media(700) {
+          margin-right: 20px;
+        }
+      }
+
+      &.next {
+        margin-left: 80px;
+
+        @include media(700) {
+          margin-left: 20px;
+        }
+      }
+
+      &.dots {
+        span {
+          font-size: 14px;
+        }
+
+        &:hover {
+          background: transparent;
+          border: 1px solid #D2D3E1;
+
+          span {
+            color: initial;
+          }
+        }
+      }
+
+      &.disabled {
+        pointer-events: none;
+      }
+    }
+  }
+
+  &-arrow {
+    font-weight: 500;
+    font-size: 16px !important;
+    text-transform: uppercase;
+    color: #909090;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}

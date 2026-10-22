@@ -1,0 +1,13 @@
+{{!--
+  Чекбокс. Подключение в странице:
+  {{> components/customCheckbox/checkbox id="agree" text="Согласен с условиями" checked=true}}
+--}}
+<div class="form-control form-control-checkbox">
+    <input id="{{id}}"
+           class="custom-checkbox"
+           type="checkbox"
+           name="{{#if name}}{{name}}{{else}}{{id}}{{/if}}"
+           {{#if checked}}checked{{/if}}
+    >
+    <label for="{{id}}" class="form-control__text">{{{text}}}</label>
+</div>

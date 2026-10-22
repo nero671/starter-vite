@@ -1,0 +1,122 @@
+@use 'sass:math';
+
+// !px → rem: rem(24) → 1.5rem
+@function rem($px, $base: $fontSize) {
+  @return math.div($px, $base) * 1rem;
+}
+
+// !убирает единицы измерения: strip(320px) → 320
+@function strip($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
+// !резиновое значение через clamp(): от $min (на ширине $minVw) до $max (на ширине $maxVw)
+// font-size: fluid(16, 32);  padding: fluid(20, 60) 0;
+@function fluid($min, $max, $minVw: $minWidth, $maxVw: $maxWidthContainer) {
+  $minVw: strip($minVw);
+  $maxVw: strip($maxVw);
+
+  $slope: math.div($max - $min, $maxVw - $minVw);
+  $intercept: $min - $slope * $minVw;
+  $vw: math.div(math.round($slope * 100 * 1000), 1000);
+
+  @return clamp(#{rem(math.min($min, $max))}, #{rem($intercept)} + #{$vw}vw, #{rem(math.max($min, $max))});
+}
+
+// !gradient for text
+@mixin textGradient($gradient) {
+  background: $gradient;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+// !media (desktop-first): @include media(767) { ... } → @media (max-width: 767.98px)
+@mixin media($width) {
+  @media (max-width: #{$width + '.98' + px}) {
+    @content;
+  }
+}
+
+// !media (mobile-first): @include mediaMin(768) { ... } → @media (min-width: 768px)
+@mixin mediaMin($width) {
+  @media (min-width: #{$width + px}) {
+    @content;
+  }
+}
+
+// !hover только на устройствах с мышью (на тач-экранах hover «залипает» после тапа)
+@mixin hover {
+  @media (any-hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// !:not (last-child)
+@mixin notLast() {
+  &:not(:last-child) {
+    @content;
+  }
+}
+
+// !:not (first-child)
+@mixin notFirst() {
+  &:not(:first-child) {
+    @content;
+  }
+}
+
+// !обрезает текст до определенного кол-ва строк, остаток заменяет на 3 точки (...)
+@mixin lineClamp($value) {
+  display: -webkit-box;
+  -webkit-line-clamp: $value;
+  line-clamp: $value;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// !styled placeholder for TextArea (вендорные префиксы добавит autoprefixer)
+@mixin styledPlaceholder($color, $fontSize: inherit, $lineHeight: normal) {
+  &::placeholder {
+    color: $color;
+    font-size: $fontSize;
+    line-height: $lineHeight;
+    opacity: 1;
+  }
+}
+
+// !плавное убирание placeholder ($time — в миллисекундах, без единиц)
+@mixin hidePlaceholder($time: 300, $effect: ease) {
+  &::placeholder {
+    opacity: 1;
+    transition: opacity #{$time}ms $effect;
+  }
+
+  &:focus::placeholder {
+    opacity: 0;
+  }
+}
+
+// !after-before
+@mixin afterBefore($type, $pos: absolute) {
+  &::#{$type} {
+    content: '';
+    position: $pos;
+    @content;
+  }
+}
+
+// !визуально скрыть элемент, оставив его доступным для скринридеров
+@mixin visuallyHidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

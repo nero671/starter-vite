@@ -1,0 +1,29 @@
+{{!--
+  Аккордеон. Подключение в странице:
+  {{> components/accordion/accordion
+    single=true
+    items=(parseJson '[
+      { "title": "Первый вопрос", "text": "Ответ на первый вопрос", "open": true },
+      { "title": "Второй вопрос", "text": "Ответ на второй вопрос" }
+    ]')
+  }}
+  single=true — одновременно открыт только один пункт.
+  JS: initAccordions() в app.js
+--}}
+<div class="accordion" data-accordion {{#if single}}data-accordion-single{{/if}}>
+    {{#each items}}
+    <div class="accordion__item">
+        <button class="accordion__title" type="button" aria-expanded="{{#if this.open}}true{{else}}false{{/if}}">
+            <span>{{this.title}}</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M15 7.99976L10.0503 12.9495C8.87868 14.1211 6.97919 14.1211 5.80761 12.9495L0.857866 7.99976" stroke="currentColor" stroke-width="2"/>
+            </svg>
+        </button>
+        <div class="accordion__content{{#if this.open}} active{{/if}}">
+            <div class="accordion__body">
+                <div class="accordion__text">{{{this.text}}}</div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>

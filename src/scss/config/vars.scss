@@ -1,0 +1,43 @@
+$maxWidth: 1920px; // максимальная ширина страницы
+$minWidth: 320px; // минимальная ширина телефона
+$maxWidthContainer: 1260px; // ширина контейнера с учетом padding слева и справа
+$containerWidth: 1230px; // ширина контейнера из макета
+
+$mainOffset: 15px; // отступы безопасности для контейнера
+$mainFont: ''; // !указать здесь основное семейство шрифта
+$mainWeight: 400; // !указать здесь основное начертание шрифта
+
+$headerHeight: 100;
+$footerHeight: 100;
+
+//$mainRadius: rem(10);
+
+$whiteColor: #fff;
+$blackColor: #131313;
+$grayColor: #6f6f6f;
+$redColor: #ff4040;
+$blueColor: #004c97;
+
+$firstAccentColor: $blackColor;
+$secondAccentColor: $redColor;
+
+$fontFamily: sans-serif; // Семейство шрифта по умолчанию
+@if $mainFont != '' {
+  $fontFamily: $mainFont, sans-serif;
+}
+$fontFamilySecondary: $fontFamily; // Дополнительное семейство шрифта
+$fontColor: $blackColor; // Цвет шрифта по умолчанию
+$fontSize: 16; // Размер шрифта по умолчанию
+$fontWeight: $mainWeight; // Жирность шрифта по умолчанию
+
+$standartTrans: all 280ms ease-in-out 0ms;
+
+$btnBoxShadow: 0px 2px 3px rgba(#000, 10%), 0px 8px 3px rgba(#000, 10%);
+
+$lightBoxShadow: 0 0 2px 0 rgba(#000, 10%), 0 0 4px 0 rgba(#000, 10%),
+  0 0 8px 0 rgba(#000, 10%);
+
+$hoverBoxShadow: 0 0 5px 0 rgba(#000, 10%), 0 0 10px 0 rgba(#000, 10%),
+  0 0 15px 0 rgba(#000, 10%);
+
+$animation-duration: 0.3s;

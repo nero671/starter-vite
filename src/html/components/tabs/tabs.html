@@ -1,0 +1,22 @@
+{{!--
+  Табы. Подключение в странице:
+  {{> components/tabs/tabs
+    items=(parseJson '[
+      { "title": "Описание", "text": "Текст первой вкладки" },
+      { "title": "Характеристики", "text": "Текст второй вкладки" }
+    ]')
+  }}
+  JS: initTabs() в app.js
+--}}
+<div class="tabs" data-tabs>
+    <div class="tabs__nav" data-tabs-nav>
+        {{#each items}}
+        <button class="tabs__btn{{#if @first}} show{{/if}}" type="button" data-tabs-button>{{this.title}}</button>
+        {{/each}}
+    </div>
+    {{#each items}}
+    <div class="tabs__panel{{#if @first}} active{{/if}}" data-tabs-panel>
+        {{{this.text}}}
+    </div>
+    {{/each}}
+</div>

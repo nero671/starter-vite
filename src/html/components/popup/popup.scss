@@ -1,0 +1,63 @@
+/**
+ * Модальное окно. Открывается классом ._is-open (togglePopupWindows).
+ * visibility: hidden — закрытое окно не перехватывает клики и не попадает в фокус по Tab.
+ */
+.popup {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: rgba(20, 22, 24, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s, visibility 0.3s;
+
+  &._is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
+  }
+
+  &-content {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    padding: 40px;
+    border-radius: 16px;
+    background: $whiteColor;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+
+    ._is-open & {
+      transform: none;
+    }
+
+    @include media(600) {
+      padding: 40px 20px 24px;
+    }
+  }
+
+  &-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    padding: 4px;
+    background: none;
+    cursor: pointer;
+  }
+}

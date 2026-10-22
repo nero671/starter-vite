@@ -1,0 +1,90 @@
+// Мобильное меню (разметка: src/html/mobile-menu.html). Открывается классом .menu-open на <html> (BurgerMenu)
+.menu-open .mobile-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.menu-open .icon-menu {
+  z-index: 10000;
+}
+
+.menu-open .header.sticky {
+  position: absolute;
+  z-index: initial;
+
+  .icon-menu {
+    z-index: 9999999;
+  }
+}
+
+.mobile-menu-container {
+  position: relative;
+  padding-bottom: 70px;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.mobile-menu {
+  justify-content: flex-end;
+
+  &__wrapper {
+    background-color: #fff;
+    width: 70%;
+    height: 100%;
+    margin-left: auto;
+    padding: 24px 16px;
+    transform: translateX(100%);
+    transition: transform 0.55s ease;
+
+    .menu-open &,
+    &.active {
+      transform: translateX(0);
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__list {
+    display: flex;
+    margin-left: 0;
+    margin-top: 20px;
+
+    ul {
+      flex-direction: column;
+
+      li {
+        padding: 3px 0;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+
+    svg {
+      margin-left: 0;
+    }
+
+    @media (max-height: 380px) {
+      position: static;
+      margin-top: 20px;
+    }
+  }
+
+  &__btn {
+    line-height: 40px;
+    padding: 0 30px;
+    margin-bottom: 10px;
+  }
+}

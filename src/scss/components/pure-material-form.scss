@@ -1,0 +1,183 @@
+.pure-material-textfield-outlined {
+  --pure-material-safari-helper1: #aaacab;
+  position: relative;
+  display: inline-block;
+  padding-top: 6px;
+  font-size: 16px;
+  line-height: 1.5;
+  width: 100%;
+  height: auto;
+
+  &.form-control__pass-wrapper .show-eye {
+    top: 56%;
+  }
+
+  & ~ button {
+    margin-top: 6px;
+  }
+}
+
+/* Input, Textarea */
+.pure-material-textfield-outlined > input,
+.pure-material-textfield-outlined > textarea {
+  box-sizing: border-box;
+  margin: 0;
+  border: solid 1px; /* Safari */
+  border-color: rgba(0, 0, 0, 0.3);
+  //border-top-color: transparent;
+  border-radius: 0;
+  padding: 17px 20px;
+  width: 100%;
+  height: 56px;
+  background-color: transparent;
+  box-shadow: none; /* Firefox */
+  font-weight: 500;
+  font-size: 18px;
+  color: #262626;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.pure-material-textfield-outlined > textarea {
+  height: 150px;
+}
+
+/* Span */
+.pure-material-textfield-outlined > input + span,
+.pure-material-textfield-outlined > textarea + span {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  display: flex;
+  border-color: #aaacab;
+  width: auto;
+  max-height: 100%;
+  color: #909090;
+  font-size: 75%;
+  line-height: 15px;
+  cursor: text;
+  transition: color 0.3s, font-size 0.3s, line-height 0.3s;
+  font-weight: 500;
+  background: #fff;
+  padding: 0 5px;
+  pointer-events: none;
+
+  small {
+    color: #262626;
+    margin-left: 6px;
+    margin-top: -2px;
+  }
+}
+
+/* Стили для hover */
+.pure-material-textfield-outlined:hover > input:not(:focus):placeholder-shown,
+.pure-material-textfield-outlined:hover > textarea:not(:focus):placeholder-shown {
+  border-color: #aaacab;
+}
+
+/* Placeholder-shown */
+.pure-material-textfield-outlined > input:not(:focus):placeholder-shown,
+.pure-material-textfield-outlined > textarea:not(:focus):placeholder-shown {
+  border-top-color: #aaacab;
+}
+
+/* Стили для span */
+.pure-material-textfield-outlined > input:not(:focus):placeholder-shown + span,
+.pure-material-textfield-outlined > textarea:not(:focus):placeholder-shown + span {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 50px;
+  top: 10px;
+}
+
+/* Фикс для Safari */
+@supports (-webkit-hyphens: none) {
+  /* Используем :empty вместо :placeholder-shown в Safari */
+  .pure-material-textfield-outlined > input:not(.filled):not(:focus) + span,
+  .pure-material-textfield-outlined > textarea:not(.filled):not(:focus) + span {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 50px;
+    top: 10px;
+  }
+
+  /* Стили для border-top-color, если :placeholder-shown не срабатывает */
+  .pure-material-textfield-outlined > input:empty:not(:focus),
+  .pure-material-textfield-outlined > textarea:empty:not(:focus) {
+    border-top-color: #aaacab;
+  }
+
+  /* Для hover */
+  .pure-material-textfield-outlined:hover > input:empty:not(:focus),
+  .pure-material-textfield-outlined:hover > textarea:empty:not(:focus) {
+    border-color: #aaacab;
+  }
+}
+
+
+/* Focus */
+.pure-material-textfield-outlined > input:focus,
+.pure-material-textfield-outlined > textarea:focus {
+  border-color: #aaacab;
+  outline: none;
+}
+
+.pure-material-textfield-outlined > input:focus + span,
+.pure-material-textfield-outlined > textarea:focus + span {
+  color: #909090;
+  background: #fff;
+  padding: 0 5px;
+  text-align: center;
+  top: 0;
+
+  //small {
+  //  display: none;
+  //}
+}
+
+/* Disabled */
+//.pure-material-textfield-outlined > input:disabled,
+//.pure-material-textfield-outlined > input:disabled + span,
+//.pure-material-textfield-outlined > textarea:disabled,
+//.pure-material-textfield-outlined > textarea:disabled + span {
+//  border-color: rgba(var(--pure-material-onsurface-rgb, 255, 255, 255), 0.38) !important;
+//  border-top-color: transparent !important;
+//  color: rgba(var(--pure-material-onsurface-rgb, 255, 255, 255), 0.38);
+//  pointer-events: none;
+//}
+
+//.pure-material-textfield-outlined > input:disabled + span::before,
+//.pure-material-textfield-outlined > input:disabled + span::after,
+//.pure-material-textfield-outlined > textarea:disabled + span::before,
+//.pure-material-textfield-outlined > textarea + span::after {
+//  border-top-color: rgba(var(--pure-material-onsurface-rgb, 255, 255, 255), 0.38) !important;
+//}
+
+//.pure-material-textfield-outlined > input:disabled:placeholder-shown,
+//.pure-material-textfield-outlined > input:disabled:placeholder-shown + span,
+//.pure-material-textfield-outlined > textarea:disabled:placeholder-shown,
+//.pure-material-textfield-outlined > textarea:disabled:placeholder-shown + span {
+//  border-top-color: rgba(var(--pure-material-onsurface-rgb, 255, 255, 255), 0.38) !important;
+//}
+
+//.pure-material-textfield-outlined > input:disabled:placeholder-shown + span::before,
+//.pure-material-textfield-outlined > input:disabled:placeholder-shown + span::after,
+//.pure-material-textfield-outlined > textarea:disabled:placeholder-shown + span::before,
+//.pure-material-textfield-outlined > textarea:disabled:placeholder-shown + span::after {
+//  border-top-color: transparent !important;
+//}
+
+/* Faster transition in Safari for less noticeable fractional font-size issue */
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance:none) {
+    .pure-material-textfield-outlined > input,
+    .pure-material-textfield-outlined > input + span,
+    .pure-material-textfield-outlined > textarea,
+    .pure-material-textfield-outlined > textarea + span,
+    .pure-material-textfield-outlined > input + span::before,
+    .pure-material-textfield-outlined > input + span::after,
+    .pure-material-textfield-outlined > textarea + span::before,
+    .pure-material-textfield-outlined > textarea + span::after {
+      transition-duration: 0.3s;
+    }
+  }
+}

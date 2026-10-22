@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/scss/style.scss">
+
+  <title>Разводящая</title>
+
+  <style>
+    .wrapper-ini {
+      height: 100vh;
+      height: 100dvh;
+      width: 100%;
+    }
+
+    .wrapper-ini__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .wrapper-ini__title {
+      color: #373843;
+      font-size: 56px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 110%;
+      letter-spacing: -1.68px;
+      margin-bottom: 20px;
+    }
+
+
+    .wrapper-ini__links {
+      width: fit-content;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: #fff;
+      border-radius: 30px;
+      gap: 20px;
+    }
+
+    .wrapper-ini__links a {
+      padding: 5px 15px;
+      border: 1px solid #00A0DC;
+      border-radius: 30px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 576px) {
+      .wrapper-ini__links {
+        height: 90%;
+        overflow: auto;
+        padding-bottom: 50px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+<div class="wrapper-ini">
+  <div class="wrapper-ini__container">
+    <h1 class="wrapper-ini__title">
+      Страницы
+    </h1>
+    <div class="wrapper-ini__links">
+      {{!-- Список собирается автоматически из всех .html в src. Название — из title="..." страницы --}}
+      {{#each pages}}
+      <a href="{{this.file}}">
+        {{this.title}}
+      </a>
+      {{/each}}
+    </div>
+
+  </div>
+
+</div>
+{{> script}}
+</body>
+</html>

@@ -1,0 +1,58 @@
+// Заголовки, общие БЄМ блоки и проче...
+[data-type] svg {
+  pointer-events: none;
+}
+
+span, p, a, b, strong, li {
+  color: inherit;
+}
+
+/**
+ * При сборке <img> оборачивается в <picture> для webp.
+ * display: contents — <picture> не участвует в раскладке, поэтому стили картинок
+ * (flex/grid, размеры) работают одинаково в dev и build.
+ */
+picture {
+  display: contents;
+}
+
+*::placeholder {
+  color: inherit;
+}
+
+.swiper {
+  img {
+    user-select: none;
+  }
+}
+
+.mob {
+  display: none;
+
+  @include media(700) {
+    display: block;
+  }
+}
+
+@include media(700) {
+  .desk {
+    display: none;
+  }
+}
+
+div[data-type],
+span[data-type] {
+  cursor: pointer;
+}
+
+
+//#map_with_balloon,
+//.ymaps-2-1-79-map,
+//.ymaps-2-1-79-map, {
+//  width: 789px !important;
+//  height: 646px !important;
+//}
+//
+//#map_with_balloon canvas {
+//
+//}

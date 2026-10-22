@@ -1,0 +1,57 @@
+{
+  "name": "starter-vite",
+  "version": "2.0.0",
+  "description": "Сборка Vite для вёрстки многостраничных сайтов",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "zip": "vite build && node vite/tasks/zip.js",
+    "deployFTP": "vite build && node vite/tasks/ftp.js",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build",
+    "prettier": "prettier --write \"**/*.{js,json,html,css,scss,md}\""
+  },
+  "browserslist": [
+    "defaults",
+    "> 0.2%",
+    "Safari >= 14",
+    "iOS >= 14",
+    "not dead",
+    "not op_mini all"
+  ],
+  "author": "Kachalko Stanislav",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.6.1",
+    "basic-ftp": "^6.2.3",
+    "browserslist-to-esbuild": "^2.1.1",
+    "fflate": "^0.8.3",
+    "fonteditor-core": "^2.6.3",
+    "gh-pages": "^6.3.0",
+    "handlebars": "^4.7.10",
+    "html-minifier-terser": "^7.2.0",
+    "lightningcss": "^1.33.0",
+    "postcss": "^8.5.31",
+    "postcss-sort-media-queries": "^6.7.1",
+    "prettier": "^3.9.10",
+    "sass": "^1.106.0",
+    "sharp": "^0.35.5",
+    "svg-sprite": "^2.0.4",
+    "tinyglobby": "^0.2.17",
+    "vite": "^8.3.5",
+    "wawoff2": "^2.0.1"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "imask": "^7.6.1",
+    "nouislider": "^15.8.1",
+    "pristinejs": "^1.1.0",
+    "swiper": "^14.3.0"
+  }
+}

@@ -1,0 +1,143 @@
+.range-slider {
+  $this: &;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 2px 0 0 2px;
+
+  &--price {
+    #{$this}__control {
+      &--from,
+      &--to {
+        border-radius: 8px;
+        background: #F6F6F6;
+      }
+    }
+  }
+
+  &--alcohol-strength {
+    #{$this}__control {
+      &--from,
+      &--to {
+        border-radius: 8px;
+        background: #F6F6F6;
+      }
+    }
+  }
+
+  &__control {
+    position: relative;
+    width: 116px;
+
+    @include media(1300) {
+      width: 80px;
+    }
+
+    &::before,
+    &::after {
+      font-size: 14px;
+      font-weight: 600;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: $blackColor;
+    }
+
+    //&--from {
+    //  &::before {
+    //    content: 'от';
+    //    left: 16px;
+    //  }
+    //}
+
+    //&--to {
+    //  &::after {
+    //    content: 'до';
+    //    left: 16px;
+    //  }
+    //}
+  }
+
+  &__input {
+    padding: 23px 16px;
+    width: inherit;
+    background: #F6F6F6;
+    color: #373843;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: -0.42px;
+    border-radius: 8px;
+  }
+
+  &__element {
+    grid-column: 1 / -1;
+    height: 4px;
+    padding-right: 15px;
+    box-shadow: none;
+    border: none;
+    background: #D2D3E1;
+    border-radius: 10px;
+  }
+
+  .noUi-connects {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .noUi-connect {
+    background: #00A0DC;
+    will-change: transform;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    height: 4px;
+    width: 95%;
+    -ms-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform-style: preserve-3d;
+    transform-origin: 0 0;
+    transform-style: flat;
+  }
+
+  .noUi-origin {
+    position: relative;
+  }
+
+  .noUi-handle {
+    right: -15px;
+    width: 16px;
+    height: 16px;
+    box-shadow: none;
+    border: 4px solid #00A0DC;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+
+    &::after,
+    &::before {
+      content: none;
+    }
+  }
+
+  .rang-slider__minmax-wrapper {
+    grid-column: 1 / -1;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    margin-bottom: 20px;
+    color: #373843;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.36px;
+  }
+}

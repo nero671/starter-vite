@@ -1,0 +1,5 @@
+dist
+node_modules
+_legacy
+package-lock.json
+src/scss/libs

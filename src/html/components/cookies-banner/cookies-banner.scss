@@ -1,0 +1,102 @@
+.cookies-banner {
+  position: fixed;
+  inset: 0;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: rgba(26, 26, 26, 0.4);
+  z-index: 9;
+  transition: opacity $animation-duration ease-in-out;
+
+  &__content {
+    max-width: 914px;
+    display: grid;
+    gap: 24px;
+    padding: 20px 30px;
+    border-radius: 20px;
+    background-color: $whiteColor;
+    transition: translate $animation-duration ease-in-out;
+  }
+
+  @include media(700) {
+    padding: 16px;
+  }
+
+  &__info {
+    display: grid;
+    gap: 24px;
+    align-items: flex-start;
+    grid-template-columns: 1fr auto;
+
+    @include media(700) {
+      gap: 16px;
+    }
+  }
+
+  &__text {
+    font-family: $fontFamilySecondary;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    color: #1d2a4f;
+
+    @include media(700) {
+      font-size: 14px;
+    }
+
+    a {
+      color: $blueColor;
+      text-decoration-line: underline;
+      text-decoration-style: solid;
+      text-decoration-skip-ink: auto;
+      text-decoration-thickness: auto;
+      text-underline-offset: auto;
+      text-underline-position: from-font;
+
+      @include hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__close {
+    background: none;
+    color: #8b8b90;
+    transition: color $animation-duration ease-in-out;
+
+    @include hover {
+      color: $blueColor;
+    }
+
+    svg {
+      display: block;
+      width: 32px;
+      height: auto;
+      aspect-ratio: 1/1;
+
+      @include media(700) {
+        width: 24px;
+      }
+    }
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    @include media(700) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &:not(.is-active) {
+    opacity: 0;
+    pointer-events: none;
+
+    .cookies-banner__content {
+      translate: 0 100%;
+    }
+  }
+}

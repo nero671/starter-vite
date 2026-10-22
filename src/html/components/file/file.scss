@@ -1,0 +1,136 @@
+.custom-file {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 20px;
+
+  &:focus-within .custom-file-label-wrapper {
+    border-color: #262626;
+  }
+
+  .form-control--success {
+    .custom-file-label-wrapper {
+      border: none;
+      padding-left: 0;
+    }
+
+    .custom-file-label span {
+      font-weight: 500;
+      font-size: 18px;
+      text-decoration: underline;
+      text-decoration-skip-ink: none;
+      color: #262626;
+    }
+
+    svg {
+      display: none;
+    }
+
+    .custom-file-label-success {
+      display: block;
+    }
+  }
+}
+
+.custom-file-label-success {
+  display: none;
+  font-weight: 400;
+  font-size: 14px;
+  color: #909090;
+}
+
+.custom-file-input {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.custom-file-label-wrapper {
+  border: 1px solid #aaacab;
+  width: 100%;
+  height: 100%;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+
+  //span {
+  //  color: #8F8F8F;
+  //  font-size: 14px;
+  //  font-weight: 400;
+  //  line-height: 150%;
+  //  padding-left: 10px;
+  //}
+}
+
+.custom-file-label {
+  display: grid;
+  grid-template-columns: 1fr 21px;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 18px;
+  color: #909090;
+  background: transparent;
+  width: 100%;
+
+  small {
+    margin-right: 6px;
+    margin-top: -2px;
+  }
+
+  svg {
+    width: 21px;
+  }
+}
+
+.file-list {
+  display: flex;
+  align-items: center;
+
+  @media(max-width: 576px) {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  background: #F5F5F8;
+  color: #393939;
+  font-size: 12px;
+  font-weight: 600;
+  position: relative;
+  z-index: 9;
+
+  &:first-child {
+    margin: 0 10px;
+
+    @media(max-width: 576px) {
+      margin: 0;
+      margin-top: 10px;
+    }
+  }
+}
+
+.file-text-wrapper {
+  margin-right: 16px;
+  margin-left: 8px;
+}
+
+.file-size {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.file-remove {
+  color: red;
+  cursor: pointer;
+}

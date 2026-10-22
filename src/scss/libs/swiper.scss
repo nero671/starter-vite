@@ -1,0 +1,8 @@
+/**
+ * Базовые стили Swiper подключаются прямо из node_modules,
+ * поэтому всегда соответствуют установленной версии пакета.
+ * Стили модулей (по необходимости):
+ * @import 'swiper/css/navigation';
+ * @import 'swiper/css/pagination';
+ */
+@import 'swiper/css';

@@ -1,0 +1,85 @@
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  &.lock {
+    overflow: hidden;
+    touch-action: none;
+  }
+}
+// Базовые анимации:
+// @import "keyframes";
+
+// Стили для полноэкранного блока:
+// @import "fullscreen";
+
+// Стили основного ограничивающего контейнера =================================
+/*
+* (i) Стили будут применяться ко
+* всем классам содержащим *__container
+* Например header__container, main__container и т.д.
+*/
+[class*='__container'] {
+  max-width: $maxWidthContainer;
+  margin: 0 auto;
+  padding: 0 $mainOffset;
+}
+
+// Оболочка ===================================================================
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: hidden;
+  // clip обрезает так же, как hidden, но не ломает position: sticky
+  overflow: clip;
+}
+
+.page {
+  position: relative;
+  flex: 1 1 auto;
+
+  [data-observ] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: transparent;
+    pointer-events: none;
+  }
+
+  &_start {
+    padding-top: $headerHeight;
+  }
+}
+
+/**
+ * Плавные hover-эффекты для интерактивных элементов (и при наведении, и при уходе курсора).
+ * :where() не добавляет специфичности — любой transition в компоненте перекроет это правило.
+ */
+:where(a, button, input, textarea, select, label, [data-type]) {
+  transition-property: color, background-color, border-color, opacity, box-shadow;
+  transition-duration: $animation-duration;
+  transition-timing-function: ease;
+}
+
+svg {
+  overflow: visible;
+}
+
+h1, h2, h3, h4, h5, h6, p, div, span, b, i, strong {
+  text-box: trim-both cap alphabetic; //обрезает текст ровно по границам
+}
+
+// Отключаем анимации, если пользователь попросил об этом в настройках системы
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
